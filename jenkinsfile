@@ -1,20 +1,55 @@
 pipeline {
     agent any
+    
     stages {
         stage('Build') {
             steps {
-                echo "Fetching the source code"
-                echo "Compiling the code and generating any necessary artifacts"
-                // Implement actual build steps here
+                echo 'Building the code using Maven'
+                // Maven build step
+            }
+        }
+        stage('Unit and Integration Tests') {
+            steps {
+                echo 'Running unit tests and integration tests'
+                // Test automation tools like JUnit, TestNG, or Selenium can be used here
+            }
+        }
+        stage('Code Analysis') {
+            steps {
+                echo 'Performing code analysis'
+                // Tools like SonarQube, Checkstyle, or PMD can be integrated here
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                echo 'Performing security scan'
+                // Tools like OWASP Dependency-Check or SonarQube with security plugins can be used here
             }
             post {
                 success{
                 mail to: "umerkhan90051@gmail.com",
-                subject: "building sucess full",
+                subject: "building successfull",
                 body : "this build is success full"
                 }
             }
         }
-        
+        stage('Deploy to Staging') {
+            steps {
+                echo 'Deploying the application to staging server (e.g., AWS EC2 instance)'
+                // Deployment script or plugins like AWS CodeDeploy can be used here
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps {
+                echo 'Running integration tests on staging environment'
+                // Similar to the previous integration tests, but run against the staging environment
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo 'Deploying the application to production server (e.g., AWS EC2 instance)'
+                // Deployment script or plugins like AWS CodeDeploy can be used here
+            }
+        }
     }
 }
