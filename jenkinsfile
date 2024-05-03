@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Fetching the source code from the directory path specified by the environment variable: ${DIRECTORY_PATH}"
+                echo "Fetching the source code"
                 echo "Compiling the code and generating any necessary artifacts"
                 // Implement actual build steps here
             }
